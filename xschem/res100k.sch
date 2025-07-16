@@ -4,15 +4,16 @@ K {}
 V {}
 S {}
 E {}
-N -30 -120 -20 -120 {lab=gnd}
-N -30 -120 -30 120 {lab=gnd}
-N -30 120 -20 120 {lab=gnd}
-N -30 60 -20 60 {lab=gnd}
-N -30 0 -20 0 {lab=gnd}
-N -30 -60 -20 -60 {lab=gnd}
+N -30 -120 -20 -120 {lab=GND}
+N -30 -120 -30 120 {lab=GND}
+N -30 120 -20 120 {lab=GND}
+N -30 60 -20 60 {lab=GND}
+N -30 0 -20 0 {lab=GND}
+N -30 -60 -20 -60 {lab=GND}
 N -0 -160 0 -150 {lab=top}
 N 0 150 -0 160 {lab=bot}
-N -40 0 -30 0 {lab=gnd}
+N -40 0 -30 0 {lab=GND}
+N -70 0 -40 -0 {lab=GND}
 C {sky130_fd_pr/res_xhigh_po.sym} 0 -120 0 0 {name=R1
 W=0.35
 L=3.5
@@ -45,4 +46,4 @@ spiceprefix=X
 mult=1}
 C {iopin.sym} 0 -160 3 0 {name=p1 lab=top}
 C {iopin.sym} 0 160 1 0 {name=p2 lab=bot}
-C {iopin.sym} -40 0 2 0 {name=p3 lab=sub}
+C {gnd.sym} -70 0 0 0 {name=l1 lab=GND}
