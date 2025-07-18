@@ -37,7 +37,7 @@ C {comp.sym} 30 60 0 0 {name=X3}
 C {sr_latch.sym} 190 0 0 0 {name=X4}
 C {opin.sym} 250 -20 0 0 {name=p1 lab=OUTPUT}
 C {sky130_fd_pr/nfet3_01v8.sym} 250 100 1 0 {name=M1
-W=1
+W=5
 L=0.15
 body=GND
 nf=1

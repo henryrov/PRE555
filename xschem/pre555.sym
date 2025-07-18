@@ -1,0 +1,32 @@
+v {xschem version=3.4.7 file_version=1.2}
+G {}
+K {type=subcircuit
+format="@name @pinlist @symname"
+template="name=X1"}
+V {}
+S {}
+E {}
+L 4 -90 50 90 50 {}
+L 4 90 -50 90 50 {}
+L 4 -90 -50 90 -50 {}
+L 4 -90 -50 -90 50 {}
+B 5 -92.5 -32.5 -87.5 -27.5 {name=TRIGGER
+dir=in}
+B 5 -92.5 -2.5 -87.5 2.5 {name=OUTPUT
+dir=out}
+B 5 -92.5 27.5 -87.5 32.5 {name=RESET
+dir=in}
+B 5 87.5 -2.5 92.5 2.5 {name=THRESHOLD
+dir=in}
+B 5 87.5 -32.5 92.5 -27.5 {name=DISCHARGE
+dir=inout}
+B 5 87.5 27.5 92.5 32.5 {name=CONTROL
+dir=in}
+T {TRIG} -80 -40 0 0 0.4 0.4 {}
+T {OUT} -80 -10 0 0 0.4 0.4 {}
+T {RESET_n} -80 20 0 0 0.4 0.4 {}
+T {DIS} 30 -40 0 0 0.4 0.4 {}
+T {THR} 30 -10 0 0 0.4 0.4 {}
+T {CTRL} 30 20 0 0 0.4 0.4 {}
+T {PRE555} -90 -80 0 0 0.4 0.4 {}
+T {@name} 0 60 0 0 0.4 0.4 {}
