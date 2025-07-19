@@ -18,7 +18,6 @@ N -300 90 -300 130 {lab=GND}
 N -300 130 -240 130 {lab=GND}
 N -360 90 -360 130 {lab=GND}
 N -360 130 -300 130 {lab=GND}
-N 30 20 40 20 {lab=Qn}
 N 30 -20 40 -20 {lab=Q}
 N -80 -20 -30 -20 {lab=#net1}
 N -80 -60 -80 -20 {lab=#net1}
@@ -36,4 +35,3 @@ C {code.sym} 100 -130 0 0 {name=s1 only_toplevel=false value="
 "}
 C {vsource.sym} -170 80 0 0 {name=V4 value="pulse(0 1.8 270u 0.1u 0.1u 10u)" savecurrent=false}
 C {lab_pin.sym} 40 -20 2 0 {name=p1 sig_type=std_logic lab=Q}
-C {lab_pin.sym} 40 20 2 0 {name=p2 sig_type=std_logic lab=Qn}

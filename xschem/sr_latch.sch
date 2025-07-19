@@ -170,7 +170,6 @@ spiceprefix=X
 C {vdd.sym} 330 -270 0 1 {name=l3 lab=VDD}
 C {gnd.sym} 330 100 0 1 {name=l4 lab=GND}
 C {ipin.sym} 470 60 0 1 {name=p2 lab=r0}
-C {opin.sym} 110 10 3 0 {name=p3 lab=qn}
 C {opin.sym} 220 20 3 0 {name=p4 lab=q}
 C {sky130_fd_pr/pfet3_01v8.sym} 350 -240 0 1 {name=M9
 W=1
