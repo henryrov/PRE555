@@ -1,0 +1,45 @@
+magic
+tech sky130A
+timestamp 1753016921
+<< locali >>
+rect 370 2485 470 2495
+rect 370 2285 380 2485
+rect 460 2285 470 2485
+rect 370 2275 470 2285
+rect 5 335 45 2145
+rect 105 1695 140 1745
+rect 105 1660 470 1695
+rect 335 1630 370 1660
+rect 105 835 140 890
+rect 105 800 470 835
+rect 335 770 370 800
+rect 5 220 40 335
+rect 5 215 105 220
+rect 5 5 10 215
+rect 100 5 105 215
+rect 5 0 105 5
+<< viali >>
+rect 380 2285 460 2485
+rect 10 5 100 215
+<< metal1 >>
+rect 0 2485 470 2495
+rect 0 2285 380 2485
+rect 460 2285 470 2485
+rect 0 2275 470 2285
+rect 0 215 470 220
+rect 0 5 10 215
+rect 100 5 470 215
+rect 0 0 470 5
+use res100k  res100k_0
+array 0 0 0 0 2 860
+timestamp 1753015857
+transform 1 0 105 0 1 220
+box -105 -220 267 554
+<< labels >>
+rlabel metal1 0 0 470 220 5 GND
+rlabel metal1 0 2275 470 2495 1 VDD
+rlabel locali 470 1660 470 1695 3 v2t
+port 2 e
+rlabel locali 470 800 470 835 3 v1t
+port 1 e
+<< end >>
