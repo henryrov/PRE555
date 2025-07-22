@@ -89,8 +89,8 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet3_01v8.sym} -20 150 0 0 {name=M5
-W=1
-L=0.15
+W=3.5
+L=1
 body=GND
 nf=1
 mult=1
@@ -104,8 +104,8 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet3_01v8.sym} -100 150 0 1 {name=M6
-W=1
-L=0.15
+W=3.5
+L=1
 body=GND
 nf=1
 mult=1
