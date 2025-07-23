@@ -1,6 +1,6 @@
 magic
 tech sky130A
-timestamp 1753194662
+timestamp 1753284924
 << nwell >>
 rect 1080 675 1690 775
 rect 1080 560 1485 675
@@ -213,7 +213,7 @@ rect -60 20 1090 60
 rect 1645 20 1690 280
 rect -60 0 1690 20
 use inverter  inverter_0
-timestamp 1753018132
+timestamp 1753284924
 transform 1 0 1605 0 1 425
 box -120 -35 85 275
 use res100k  res100k_0
