@@ -1,0 +1,61 @@
+* NGSPICE file created from pre555.ext - technology: sky130A
+
+.subckt res100k bot top GND
+X0 a_0_668# bot GND sky130_fd_pr__res_xhigh_po_0p35 l=3.5
+X1 top a_348_n440# GND sky130_fd_pr__res_xhigh_po_0p35 l=3.5
+X2 a_0_668# a_116_n440# GND sky130_fd_pr__res_xhigh_po_0p35 l=3.5
+X3 a_232_668# a_116_n440# GND sky130_fd_pr__res_xhigh_po_0p35 l=3.5
+X4 a_232_668# a_348_n440# GND sky130_fd_pr__res_xhigh_po_0p35 l=3.5
+.ends
+
+.subckt vdiv v1t v2t VDD GND
+Xres100k_0[0] GND v1t GND res100k
+Xres100k_0[1] v1t v2t GND res100k
+Xres100k_0[2] v2t VDD GND res100k
+.ends
+
+.subckt inverter a y VDD GND
+X0 y a VDD VDD sky130_fd_pr__pfet_01v8 ad=0.5 pd=3 as=0.5 ps=3 w=1 l=0.15
+X1 y a GND GND sky130_fd_pr__nfet_01v8 ad=0.5 pd=3 as=0.5 ps=3 w=1 l=0.15
+.ends
+
+.subckt comp inn inp inverter_0/y VDD GND
+Xinverter_0 inverter_0/a inverter_0/y VDD GND inverter
+Xres100k_0 res100k_0/bot VDD GND res100k
+X0 VDD a_2200_760# a_2200_760# VDD sky130_fd_pr__pfet_01v8 ad=0.25 pd=1.5 as=0.5 ps=3 w=1 l=1
+X1 GND res100k_0/bot a_1460_170# GND sky130_fd_pr__nfet_01v8 ad=3.5 pd=9 as=3.5 ps=9 w=3.5 l=1
+X2 inverter_0/a a_2200_760# VDD VDD sky130_fd_pr__pfet_01v8 ad=0.5 pd=3 as=0.25 ps=1.5 w=1 l=1
+X3 GND res100k_0/bot res100k_0/bot GND sky130_fd_pr__nfet_01v8 ad=3.5 pd=9 as=3.5 ps=9 w=3.5 l=1
+X4 a_1460_170# inn a_2200_760# GND sky130_fd_pr__nfet_01v8 ad=0.25 pd=1.5 as=0.5 ps=3 w=1 l=1
+X5 inverter_0/a inp a_1460_170# GND sky130_fd_pr__nfet_01v8 ad=0.5 pd=3 as=0.25 ps=1.5 w=1 l=1
+.ends
+
+.subckt sr_latch s r0 r1 q VDD GND
+X0 q a_30_n110# GND GND sky130_fd_pr__nfet_01v8 ad=0.2 pd=1.4 as=0.4 ps=2.8 w=1 l=0.15
+X1 GND r0 q GND sky130_fd_pr__nfet_01v8 ad=0.2 pd=1.4 as=0.2 ps=1.4 w=1 l=0.15
+X2 a_30_n110# s GND GND sky130_fd_pr__nfet_01v8 ad=0.2 pd=1.4 as=0.4 ps=2.8 w=1 l=0.15
+X3 a_30_n110# q a_60_350# VDD sky130_fd_pr__pfet_01v8 ad=0.4 pd=2.8 as=0.125 ps=1.25 w=1 l=0.15
+X4 a_480_350# a_30_n110# q VDD sky130_fd_pr__pfet_01v8 ad=0.125 pd=1.25 as=0.4 ps=2.8 w=1 l=0.15
+X5 a_60_350# s VDD VDD sky130_fd_pr__pfet_01v8 ad=0.125 pd=1.25 as=0.4 ps=2.8 w=1 l=0.15
+X6 VDD r1 a_560_350# VDD sky130_fd_pr__pfet_01v8 ad=0.4 pd=2.8 as=0.25 ps=1.5 w=1 l=0.15
+X7 GND q a_30_n110# GND sky130_fd_pr__nfet_01v8 ad=0.4 pd=2.8 as=0.2 ps=1.4 w=1 l=0.15
+X8 q r1 GND GND sky130_fd_pr__nfet_01v8 ad=0.4 pd=2.8 as=0.2 ps=1.4 w=1 l=0.15
+X9 a_560_350# r0 a_480_350# VDD sky130_fd_pr__pfet_01v8 ad=0.25 pd=1.5 as=0.125 ps=1.25 w=1 l=0.15
+.ends
+
+*.subckt pre555 GND TRIGGER OUTPUT RESET VDD DISCHARGE THRESHOLD CONTROL
+Xvdiv_0 vdiv_0/v1t CONTROL VDD GND vdiv
+Xinverter_0 sr_latch_0/q inverter_1/a VDD GND inverter
+Xinverter_1 inverter_1/a OUTPUT VDD GND inverter
+Xcomp_0 TRIGGER vdiv_0/v1t sr_latch_0/s VDD GND comp
+Xinverter_2 RESET inverter_2/y VDD GND inverter
+Xcomp_1 CONTROL THRESHOLD sr_latch_0/r0 VDD GND comp
+Xsr_latch_0 sr_latch_0/s sr_latch_0/r0 inverter_2/y sr_latch_0/q VDD GND sr_latch
+X0 DISCHARGE inverter_1/a GND GND sky130_fd_pr__nfet_01v8 ad=3 pd=12.5 as=3 ps=12.5 w=12 l=0.15
+X1 GND inverter_1/a DISCHARGE GND sky130_fd_pr__nfet_01v8 ad=3 pd=12.5 as=3 ps=12.5 w=12 l=0.15
+X2 GND inverter_1/a DISCHARGE GND sky130_fd_pr__nfet_01v8 ad=3 pd=12.5 as=3 ps=12.5 w=12 l=0.15
+X3 DISCHARGE inverter_1/a GND GND sky130_fd_pr__nfet_01v8 ad=3 pd=12.5 as=6 ps=25 w=12 l=0.15
+X4 GND inverter_1/a DISCHARGE GND sky130_fd_pr__nfet_01v8 ad=6 pd=25 as=3 ps=12.5 w=12 l=0.15
+X5 DISCHARGE inverter_1/a GND GND sky130_fd_pr__nfet_01v8 ad=3 pd=12.5 as=3 ps=12.5 w=12 l=0.15
+*.ends
+

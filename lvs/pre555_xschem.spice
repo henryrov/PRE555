@@ -1,0 +1,115 @@
+** sch_path: /home/henryrovner/Repos/ic_design/PRE555/xschem/pre555.sch
+**.subckt pre555 TRIGGER OUTPUT RESET THRESHOLD DISCHARGE CONTROL
+*.iopin DISCHARGE
+*.ipin TRIGGER
+*.ipin THRESHOLD
+*.ipin CONTROL
+*.ipin RESET
+*.opin OUTPUT
+X1 net1 CONTROL vdiv
+X2 THRESHOLD CONTROL net3 comp
+X3 net1 TRIGGER net2 comp
+X4 net2 net3 net4 net5 sr_latch
+X5 RESET net5 inverter
+XM2 DISCHARGE net6 GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=12 nf=1 ad=3.48 as=3.48 pd=24.58 ps=24.58 nrd=0.0241666666666667
++ nrs=0.0241666666666667 sa=0 sb=0 sd=0 mult=6 m=6
+X6 net4 net6 inverter
+X7 net6 OUTPUT inverter
+**.ends
+
+* expanding   symbol:  vdiv.sym # of pins=2
+** sym_path: /home/henryrovner/Repos/ic_design/PRE555/xschem/vdiv.sym
+** sch_path: /home/henryrovner/Repos/ic_design/PRE555/xschem/vdiv.sch
+.subckt vdiv v1t v2t
+*.iopin v2t
+*.iopin v1t
+XR1 v2t VDD res100k
+XR2 v1t v2t res100k
+XR3 GND v1t res100k
+.ends
+
+
+* expanding   symbol:  comp.sym # of pins=3
+** sym_path: /home/henryrovner/Repos/ic_design/PRE555/xschem/comp.sym
+** sch_path: /home/henryrovner/Repos/ic_design/PRE555/xschem/comp.sch
+.subckt comp inp inn out
+*.ipin inp
+*.ipin inn
+*.opin out
+XM1 net1 inn net3 GND sky130_fd_pr__nfet_01v8 L=1 W=1 nf=1 ad=0.29 as=0.29 pd=2.58 ps=2.58 nrd=0.29 nrs=0.29 sa=0 sb=0 sd=0 mult=1
++ m=1
+XM2 net1 net1 VDD VDD sky130_fd_pr__pfet_01v8 L=1 W=1 nf=1 ad=0.29 as=0.29 pd=2.58 ps=2.58 nrd=0.29 nrs=0.29 sa=0 sb=0 sd=0 mult=1
++ m=1
+XM3 net2 net1 VDD VDD sky130_fd_pr__pfet_01v8 L=1 W=1 nf=1 ad=0.29 as=0.29 pd=2.58 ps=2.58 nrd=0.29 nrs=0.29 sa=0 sb=0 sd=0 mult=1
++ m=1
+XM4 net2 inp net3 GND sky130_fd_pr__nfet_01v8 L=1 W=1 nf=1 ad=0.29 as=0.29 pd=2.58 ps=2.58 nrd=0.29 nrs=0.29 sa=0 sb=0 sd=0 mult=1
++ m=1
+XM5 net3 net4 GND GND sky130_fd_pr__nfet_01v8 L=1 W=3.5 nf=1 ad=1.015 as=1.015 pd=7.58 ps=7.58 nrd=0.0828571428571429
++ nrs=0.0828571428571429 sa=0 sb=0 sd=0 mult=1 m=1
+XM6 net4 net4 GND GND sky130_fd_pr__nfet_01v8 L=1 W=3.5 nf=1 ad=1.015 as=1.015 pd=7.58 ps=7.58 nrd=0.0828571428571429
++ nrs=0.0828571428571429 sa=0 sb=0 sd=0 mult=1 m=1
+XR1 net4 VDD res100k
+X1 net2 out inverter
+.ends
+
+
+* expanding   symbol:  sr_latch.sym # of pins=4
+** sym_path: /home/henryrovner/Repos/ic_design/PRE555/xschem/sr_latch.sym
+** sch_path: /home/henryrovner/Repos/ic_design/PRE555/xschem/sr_latch.sch
+.subckt sr_latch s r0 q r1
+*.ipin s
+*.ipin r0
+*.opin q
+*.ipin r1
+XM1 net1 q net2 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 ad=0.29 as=0.29 pd=2.58 ps=2.58 nrd=0.29 nrs=0.29 sa=0 sb=0 sd=0
++ mult=1 m=1
+XM2 net2 s VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 ad=0.29 as=0.29 pd=2.58 ps=2.58 nrd=0.29 nrs=0.29 sa=0 sb=0 sd=0 mult=1
++ m=1
+XM3 net1 s GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad=0.29 as=0.29 pd=2.58 ps=2.58 nrd=0.29 nrs=0.29 sa=0 sb=0 sd=0 mult=1
++ m=1
+XM4 net1 q GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad=0.29 as=0.29 pd=2.58 ps=2.58 nrd=0.29 nrs=0.29 sa=0 sb=0 sd=0 mult=1
++ m=1
+XM5 q net1 net3 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 ad=0.29 as=0.29 pd=2.58 ps=2.58 nrd=0.29 nrs=0.29 sa=0 sb=0 sd=0
++ mult=1 m=1
+XM6 net3 r0 net4 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 ad=0.29 as=0.29 pd=2.58 ps=2.58 nrd=0.29 nrs=0.29 sa=0 sb=0 sd=0
++ mult=1 m=1
+XM7 q r0 GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad=0.29 as=0.29 pd=2.58 ps=2.58 nrd=0.29 nrs=0.29 sa=0 sb=0 sd=0 mult=1
++ m=1
+XM8 q net1 GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad=0.29 as=0.29 pd=2.58 ps=2.58 nrd=0.29 nrs=0.29 sa=0 sb=0 sd=0 mult=1
++ m=1
+XM9 net4 r1 VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 ad=0.29 as=0.29 pd=2.58 ps=2.58 nrd=0.29 nrs=0.29 sa=0 sb=0 sd=0
++ mult=1 m=1
+XM10 q r1 GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad=0.29 as=0.29 pd=2.58 ps=2.58 nrd=0.29 nrs=0.29 sa=0 sb=0 sd=0 mult=1
++ m=1
+.ends
+
+
+* expanding   symbol:  inverter.sym # of pins=2
+** sym_path: /home/henryrovner/Repos/ic_design/PRE555/xschem/inverter.sym
+** sch_path: /home/henryrovner/Repos/ic_design/PRE555/xschem/inverter.sch
+.subckt inverter a y
+*.ipin a
+*.opin y
+XM1 y a GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad=0.29 as=0.29 pd=2.58 ps=2.58 nrd=0.29 nrs=0.29 sa=0 sb=0 sd=0 mult=1
++ m=1
+XM2 y a VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 ad=0.29 as=0.29 pd=2.58 ps=2.58 nrd=0.29 nrs=0.29 sa=0 sb=0 sd=0 mult=1
++ m=1
+.ends
+
+
+* expanding   symbol:  res100k.sym # of pins=2
+** sym_path: /home/henryrovner/Repos/ic_design/PRE555/xschem/res100k.sym
+** sch_path: /home/henryrovner/Repos/ic_design/PRE555/xschem/res100k.sch
+.subckt res100k bot top
+*.iopin top
+*.iopin bot
+XR1 net1 top GND sky130_fd_pr__res_xhigh_po_0p35 L=3.5 mult=1 m=1
+XR2 net2 net1 GND sky130_fd_pr__res_xhigh_po_0p35 L=3.5 mult=1 m=1
+XR3 net3 net2 GND sky130_fd_pr__res_xhigh_po_0p35 L=3.5 mult=1 m=1
+XR4 net4 net3 GND sky130_fd_pr__res_xhigh_po_0p35 L=3.5 mult=1 m=1
+XR5 bot net4 GND sky130_fd_pr__res_xhigh_po_0p35 L=3.5 mult=1 m=1
+.ends
+
+.GLOBAL GND
+.GLOBAL VDD
+.end

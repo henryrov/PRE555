@@ -1,0 +1,7 @@
+* SPICE3 file created from res100k.ext - technology: sky130A
+
+X0 a_0_668# bot GND sky130_fd_pr__res_xhigh_po_0p35 l=3.5
+X1 top a_348_n440# GND sky130_fd_pr__res_xhigh_po_0p35 l=3.5
+X2 a_0_668# a_116_n440# GND sky130_fd_pr__res_xhigh_po_0p35 l=3.5
+X3 a_232_668# a_116_n440# GND sky130_fd_pr__res_xhigh_po_0p35 l=3.5
+X4 a_232_668# a_348_n440# GND sky130_fd_pr__res_xhigh_po_0p35 l=3.5

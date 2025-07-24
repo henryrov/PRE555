@@ -1,0 +1,15 @@
+* NGSPICE file created from sr_latch.ext - technology: sky130A
+
+*.subckt sr_latch s r0 r1 q
+X0 q a_30_n110# GND GND sky130_fd_pr__nfet_01v8 ad=0.2 pd=1.4 as=0.4 ps=2.8 w=1 l=0.15
+X1 GND r0 q GND sky130_fd_pr__nfet_01v8 ad=0.2 pd=1.4 as=0.2 ps=1.4 w=1 l=0.15
+X2 a_30_n110# s GND GND sky130_fd_pr__nfet_01v8 ad=0.2 pd=1.4 as=0.4 ps=2.8 w=1 l=0.15
+X3 a_30_n110# q a_60_350# VDD sky130_fd_pr__pfet_01v8 ad=0.4 pd=2.8 as=0.125 ps=1.25 w=1 l=0.15
+X4 a_480_350# a_30_n110# q VDD sky130_fd_pr__pfet_01v8 ad=0.125 pd=1.25 as=0.4 ps=2.8 w=1 l=0.15
+X5 a_60_350# s VDD VDD sky130_fd_pr__pfet_01v8 ad=0.125 pd=1.25 as=0.4 ps=2.8 w=1 l=0.15
+X6 VDD r1 a_560_350# VDD sky130_fd_pr__pfet_01v8 ad=0.4 pd=2.8 as=0.25 ps=1.5 w=1 l=0.15
+X7 GND q a_30_n110# GND sky130_fd_pr__nfet_01v8 ad=0.4 pd=2.8 as=0.2 ps=1.4 w=1 l=0.15
+X8 q r1 GND GND sky130_fd_pr__nfet_01v8 ad=0.4 pd=2.8 as=0.2 ps=1.4 w=1 l=0.15
+X9 a_560_350# r0 a_480_350# VDD sky130_fd_pr__pfet_01v8 ad=0.25 pd=1.5 as=0.125 ps=1.25 w=1 l=0.15
+*.ends
+

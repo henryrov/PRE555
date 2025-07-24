@@ -1,0 +1,25 @@
+** sch_path: /home/henryrovner/Repos/ic_design/PRE555/xschem/vdiv.sch
+**.subckt vdiv v1t v2t
+*.iopin v2t
+*.iopin v1t
+XR1 v2t VDD res100k
+XR2 v1t v2t res100k
+XR3 GND v1t res100k
+**.ends
+
+* expanding   symbol:  res100k.sym # of pins=2
+** sym_path: /home/henryrovner/Repos/ic_design/PRE555/xschem/res100k.sym
+** sch_path: /home/henryrovner/Repos/ic_design/PRE555/xschem/res100k.sch
+.subckt res100k bot top
+*.iopin top
+*.iopin bot
+XR1 net1 top GND sky130_fd_pr__res_xhigh_po_0p35 L=3.5 mult=1 m=1
+XR2 net2 net1 GND sky130_fd_pr__res_xhigh_po_0p35 L=3.5 mult=1 m=1
+XR3 net3 net2 GND sky130_fd_pr__res_xhigh_po_0p35 L=3.5 mult=1 m=1
+XR4 net4 net3 GND sky130_fd_pr__res_xhigh_po_0p35 L=3.5 mult=1 m=1
+XR5 bot net4 GND sky130_fd_pr__res_xhigh_po_0p35 L=3.5 mult=1 m=1
+.ends
+
+.GLOBAL VDD
+.GLOBAL GND
+.end
