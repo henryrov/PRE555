@@ -48,6 +48,7 @@ C {vdd.sym} 240 -70 0 0 {name=l6 lab=VDD}
 C {code.sym} 290 -120 0 0 {name=s1 only_toplevel=false value="
 .option wnflag=1
 .lib /usr/local/share/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+.param MC_MM_SWITCH=1.0
 .tran 0.01u 100u
 "}
 C {lab_pin.sym} 110 0 2 0 {name=p2 sig_type=std_logic lab=trig}

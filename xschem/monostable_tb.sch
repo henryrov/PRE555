@@ -33,6 +33,7 @@ C {vdd.sym} 190 -90 0 0 {name=l6 lab=VDD}
 C {code.sym} 290 -120 0 0 {name=s1 only_toplevel=false value="
 .option wnflag=1
 .lib /usr/local/share/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+.param MC_MM_SWITCH=1.0
 .tran 1u 5m
 "}
 C {vdd.sym} -170 30 0 0 {name=l2 lab=VDD}
